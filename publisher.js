@@ -21,7 +21,7 @@ var client = mqtt.connect("mqtt://m24.cloudmqtt.com", options);
 
 client.on("connect", function() {
   setInterval(function() {
-    client.publish("myTopic", "hello");
+    client.publish("SwimTouch", "hello hanan " + new Date().getTime());
     console.log("Message Sent");
   }, 5000);
 });
