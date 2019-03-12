@@ -32,35 +32,26 @@ var client = mqtt.connect("mqtt://m24.cloudmqtt.com", options);
 client.on("connect", function() {
   client.subscribe("swimTouch/start");
   client.publish("swimTouch/nodeMCUConnected", "client:Main_sensor");
-  client.publish("swimTouch/startTime", new Date().getTime().toString());
-});
-
-client.on("message", function(topic, message) {
-  context = message.toString();
-  console.log(context + ": " + topic);
-  if (context === "start") {
-    console.log("\007");
-    client.publish("swimTouch/startTime", new Date().getTime().toString());
-  }
+  // client.publish("swimTouch/startTime", new Date().getTime().toString());
 });
 
 setTimeout(() => {
   client.publish(
     "swimTouch/jumpTime",
-    "route 1 jumpTime " + new Date().getTime().toString()
+    "route 2 jumpTime " + new Date().getTime().toString()
   );
-}, 4000);
+}, 3000);
 
 setTimeout(() => {
   client.publish(
     "swimTouch/WallSensor",
-    "route 1 sensor1 " + new Date().getTime().toString()
+    "route 2 sensor1 " + new Date().getTime().toString()
   );
-}, 12000);
+}, 10000);
 
 setTimeout(() => {
   client.publish(
     "swimTouch/WallSensor",
-    "route 1 sensor2 " + new Date().getTime().toString()
+    "route 2 sensor2 " + new Date().getTime().toString()
   );
-}, 15000);
+}, 14000);
