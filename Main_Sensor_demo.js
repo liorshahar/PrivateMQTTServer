@@ -32,7 +32,7 @@ var client = mqtt.connect("mqtt://m24.cloudmqtt.com", options);
 client.on("connect", function() {
   client.subscribe("swimTouch/start");
   client.publish("swimTouch/nodeMCUConnected", "client:Main_sensor");
-  client.publish("swimTouch/startTime", new Date().getTime().toString());
+  client.publish("swimTouch/startTime", new Date().toString());
 });
 
 client.on("message", function(topic, message) {
